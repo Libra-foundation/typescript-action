@@ -1,7 +1,6 @@
 {
   "plugins": ["@typescript-eslint"],
   "extends": [
-    "plugin:github/recommended",
     "plugin:eslint-comments/recommended"
   ],
   "parser": "@typescript-eslint/parser",
