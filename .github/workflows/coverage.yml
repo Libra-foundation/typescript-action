@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [16.x]
 
     steps:
     - uses: actions/checkout@v3
@@ -26,7 +26,10 @@ jobs:
 
     - run: npm ci
     - name: Run tests
-      run: 'npm run test -- --coverage --coverageReporters json-summary | tee ./coverage.txt'
+      run: |
+       'npm test -- --coverage --coverageReporters json-summary | tee ./coverage.txt'
+       'echo $?'
+
 
     - name: Jest Coverage Comment
       uses: MishaKav/jest-coverage-comment@main
