@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/Libra-foundation/typescript-action.git"
   },
   "keywords": [
     "actions",
