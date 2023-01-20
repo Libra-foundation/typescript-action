@@ -26,11 +26,13 @@ jobs:
 
     - run: npm ci
     - name: Run tests
-      run: | 
-        npm test -- --coverage --coverageReporters json-summary | tee ./coverage.txt ; echo $?
+      run: npm test -- --coverage --coverageReporters json-summary | tee ./coverage.txt
 
     - name: Jest Coverage Comment
       uses: MishaKav/jest-coverage-comment@main
+      id: coverage
       with:
         report-only-changed-files: true
         coverage-path: ./coverage.txt
+      run: |
+        echo steps.coverage.outputs.lines
