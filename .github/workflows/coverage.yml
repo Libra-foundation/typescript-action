@@ -34,5 +34,5 @@ jobs:
       with:
         report-only-changed-files: true
         coverage-path: ./coverage.txt
-      run: |
+    - run: |
         echo steps.coverage.outputs.lines
