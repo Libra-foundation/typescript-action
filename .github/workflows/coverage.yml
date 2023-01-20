@@ -27,8 +27,7 @@ jobs:
     - run: npm ci
     - name: Run tests
       run: | 
-        npm test -- --coverage --coverageReporters json-summary | tee ./coverage.txt
-        echo $?
+        npm test -- --coverage --coverageReporters json-summary | tee ./coverage.txt ; echo $?
 
     - name: Jest Coverage Comment
       uses: MishaKav/jest-coverage-comment@main
