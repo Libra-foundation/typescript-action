@@ -8,7 +8,11 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -37,15 +41,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(186));
 const wait_1 = __nccwpck_require__(817);
-function run() {
+function Run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const ms = core.getInput('milliseconds');
-            core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+            const MS = core.getInput("milliseconds");
+            core.debug(`Waiting ${MS} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             core.debug(new Date().toTimeString());
-            yield (0, wait_1.wait)(parseInt(ms, 10));
+            yield (0, wait_1.Wait)(parseInt(MS, 10));
             core.debug(new Date().toTimeString());
-            core.setOutput('time', new Date().toTimeString());
+            core.setOutput("time", new Date().toTimeString());
         }
         catch (error) {
             if (error instanceof Error)
@@ -53,7 +57,7 @@ function run() {
         }
     });
 }
-run();
+void Run();
 
 
 /***/ }),
@@ -73,18 +77,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.wait = void 0;
-function wait(milliseconds) {
+exports.Wait = void 0;
+function Wait(milliseconds) {
     return __awaiter(this, void 0, void 0, function* () {
-        return new Promise(resolve => {
+        return yield new Promise(resolve => {
             if (isNaN(milliseconds)) {
-                throw new Error('milliseconds not a number');
+                throw new Error("milliseconds not a number");
             }
-            setTimeout(() => resolve('done!'), milliseconds);
+            setTimeout(() => { resolve("done!"); }, milliseconds);
         });
     });
 }
-exports.wait = wait;
+exports.Wait = Wait;
 
 
 /***/ }),
