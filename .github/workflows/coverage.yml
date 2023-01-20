@@ -35,4 +35,4 @@ jobs:
         report-only-changed-files: true
         coverage-path: ./coverage.txt
     - run: |
-        echo steps.coverage.outputs.lines
+        echo ${{steps.coverage.outputs.lines}}
