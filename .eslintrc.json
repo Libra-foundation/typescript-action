@@ -11,15 +11,17 @@
   },
   "env": {
     "node": true,
-    "es6": true,
-    "jest/globals": true
+    "es6": true
   },
   "overrides": [
     {
-      "files": ["*.test.*"],
+      "files": ["__tests__/*"],
       "plugins": ["jest"],
       "env": {
         "jest/globals": true
+      },
+      "parserOptions": {
+        "project": "__tests__/tsconfig.json"
       },
       "extends": ["plugin:jest/recommended"],
       "rules": {

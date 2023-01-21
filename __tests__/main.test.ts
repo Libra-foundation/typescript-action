@@ -6,30 +6,34 @@ import * as fs from 'fs'
 import {expect, test} from '@jest/globals'
 
 test('throws invalid number', async () => {
-  const input = parseInt('foo', 10)
-  await expect(Wait(input)).rejects.toThrow('milliseconds not a number')
+  const INPUT:number = parseInt('foo', 10)
+  await expect(Wait(INPUT)).rejects.toThrow('milliseconds not a number')
 })
 
 test('wait 500 ms', async () => {
-  const start = new Date()
+  const START:Date = new Date()
   await Wait(500)
-  const end = new Date()
-  var delta = Math.abs(end.getTime() - start.getTime())
-  expect(delta).toBeGreaterThan(450)
+  const END:Date = new Date()
+  const DELTA:number = Math.abs(END.getTime() - START.getTime())
+  expect(DELTA).toBeGreaterThan(450)
 })
 
 // shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-  process.env['INPUT_MILLISECONDS'] = '500'
-  const np = process.execPath
-  const ip = path.join(__dirname, '..', 'lib', 'main.js')
+test('runs', () => {
+  process.env.INPUT_MILLISECONDS = '500'
+  const NP:string = process.execPath
+  const IP:string = path.join(__dirname, '..', 'lib', 'main.js')
 
-  if (!fs.existsSync(ip)) {
+  if (!fs.existsSync(IP)) {
     cp.execSync("npm run build")
   }
   
-  const options: cp.ExecFileSyncOptions = {
+  const OPTIONS: cp.ExecFileSyncOptions = {
     env: process.env
   }
-  console.log(cp.execFileSync(np, [ip], options).toString())
+  
+  const OUTPUT:string = cp.execFileSync(NP, [IP], OPTIONS).toString()
+
+  expect(OUTPUT).toBeDefined()
+
 })
