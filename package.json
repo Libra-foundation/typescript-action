@@ -3,6 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "description": "TypeScript template action",
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Libra-foundation/typescript-action.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,17 +26,16 @@
   "lint-staged": {
     "*.{md,ts,tsx,json,html}": "prettier --write"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Libra-foundation/typescript-action.git"
+  "jest":{
+    "collectCoverageFrom":["src/**/*.ts"],
+    "clearMocks": true,
+    "moduleFileExtensions": ["js", "ts"],
+    "testMatch": ["**/*.test.ts"],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "verbose": true
   },
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.10.0"
   },
