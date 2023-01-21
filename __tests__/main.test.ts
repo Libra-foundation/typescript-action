@@ -2,6 +2,7 @@ import {Wait} from '../src/wait'
 import * as process from 'process'
 import * as cp from 'child_process'
 import * as path from 'path'
+import * as fs from 'fs'
 import {expect, test} from '@jest/globals'
 
 test('throws invalid number', async () => {
@@ -22,6 +23,11 @@ test('test runs', () => {
   process.env['INPUT_MILLISECONDS'] = '500'
   const np = process.execPath
   const ip = path.join(__dirname, '..', 'lib', 'main.js')
+
+  if (!fs.existsSync(ip)) {
+    cp.execSync("npm run build")
+  }
+  
   const options: cp.ExecFileSyncOptions = {
     env: process.env
   }
