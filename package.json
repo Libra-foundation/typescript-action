@@ -17,7 +17,7 @@
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src/**/*.ts __tests__/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt",
     "test": "jest",
     "all": "npm run build && npm run package",
