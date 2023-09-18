@@ -16,10 +16,10 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3.6.0
+      uses: actions/setup-node@v3.8.1
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -28,7 +28,7 @@ jobs:
     - run: npm run lint -- --output-file eslint_report.json --format json
 
     - name: Annotate Code Linting Results
-      uses: ataylorme/eslint-annotate-action@1.2.0
+      uses: ataylorme/eslint-annotate-action@2.2.0
       if: always()
       with:
         repo-token: '${{ secrets.GITHUB_TOKEN }}'
